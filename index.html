@@ -50,12 +50,18 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="q" type="search" placeholder="Search documents by title, country or theme" autocomplete="off" spellcheck="false">
       </label>
+      <button type="button" class="filtertoggle" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+        <span>Filters</span><span class="fcount" id="filterCount" hidden></span>
+      </button>
       <button type="button" class="reset" id="reset" hidden>Clear all</button>
       <span class="count-readout" id="readout"></span>
     </div>
-    <div class="chips" id="categoryChips"><span class="lbl">Category</span></div>
-    <div class="chips" id="typeChips"><span class="lbl">Type</span></div>
-    <div class="chips" id="countryChips"><span class="lbl">Country / region</span></div>
+    <div class="filters" id="filterPanel">
+      <div class="chips" id="categoryChips"><span class="lbl">Category</span></div>
+      <div class="chips" id="typeChips"><span class="lbl">Type</span></div>
+      <div class="chips" id="countryChips"><span class="lbl">Country / region</span></div>
+    </div>
   </div>
 </div>
 
@@ -143,6 +149,15 @@
     qInput.value = ''; render();
   });
 
+  // ---- collapsible filters (mobile) ----------------------------------------
+  const toolbar = document.querySelector('.toolbar');
+  const filterToggle = document.getElementById('filterToggle');
+  const filterCount = document.getElementById('filterCount');
+  filterToggle.addEventListener('click', () => {
+    const open = toolbar.classList.toggle('filters-open');
+    filterToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
   // ---- render --------------------------------------------------------------
   const root = document.getElementById('catalog');
   const readout = document.getElementById('readout');
@@ -191,6 +206,9 @@
     readout.textContent = `Showing ${shown} of ${DATA.count}`;
     const active = state.q || state.categories.size || state.types.size || state.countries.size;
     resetBtn.hidden = !active;
+    const nFilters = state.categories.size + state.types.size + state.countries.size;
+    filterCount.textContent = nFilters;
+    filterCount.hidden = nFilters === 0;
   }
 
   render();

@@ -81,6 +81,7 @@
 .reset:hover{ background:var(--status-danger-soft); border-color:var(--accent); }
 .reset:focus-visible{ outline:none; box-shadow:var(--focus-ring); }
 
+.filters{ display:flex; flex-direction:column; gap:var(--space-3); }
 .chips{ display:flex; flex-wrap:wrap; gap:var(--space-2); align-items:center; }
 .chips .lbl{ font-size:var(--text-overline); font-weight:var(--weight-black); letter-spacing:var(--tracking-overline); text-transform:uppercase; color:var(--text-faint); margin-right:2px; }
 .chip{
@@ -93,6 +94,21 @@
 .chip:focus-visible{ outline:none; box-shadow:var(--focus-ring); }
 .chip[aria-pressed="true"]{ background:var(--accent); border-color:var(--accent); color:#fff; }
 .chip[aria-pressed="true"]:hover{ background:var(--accent-hot); border-color:var(--accent-hot); }
+
+/* Filters toggle — only shown on narrow screens (see media query) */
+.filtertoggle{
+  display:none; align-items:center; gap:7px; white-space:nowrap; cursor:pointer;
+  font-family:var(--font-sans); font-size:13px; font-weight:var(--weight-bold);
+  border:1px solid var(--border-default); background:var(--surface-card); color:var(--text-body);
+  padding:7px 14px; border-radius:var(--radius-sm);
+  transition:background var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+.filtertoggle svg{ width:16px; height:16px; flex:none; }
+.filtertoggle:focus-visible{ outline:none; box-shadow:var(--focus-ring); }
+.filtertoggle .fcount{
+  font-size:11px; font-weight:var(--weight-black); line-height:1; color:#fff; background:var(--accent);
+  border-radius:var(--radius-pill); padding:2px 7px; min-width:18px; text-align:center;
+}
 
 /* ------------------------------------------------------------------ Catalog */
 main{ padding:var(--space-16) 0 var(--space-24); }
@@ -145,4 +161,23 @@ footer .note{ margin-top:var(--space-4); color:rgba(255,255,255,.55); font-size:
   .grid{ grid-template-columns:1fr; }
   .kpis .page{ gap:var(--space-8); }
   .kpi b{ font-size:32px; }
+
+  /* Keep the top nav from forcing the page wider than the phone: let the
+     links scroll within the bar instead of overflowing the viewport */
+  .topnav .page{ gap:var(--space-3); }
+  .topnav nav{ min-width:0; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .topnav nav::-webkit-scrollbar{ display:none; }
+
+  /* Collapse the filter chips behind a toggle so the sticky bar stays compact */
+  .filtertoggle{ display:inline-flex; }
+  .searchwrap{ gap:var(--space-2); }
+  .search{ flex:1 1 160px; min-width:0; }
+  .count-readout{ flex-basis:100%; order:3; }
+  .filters{ display:none; }
+  .toolbar.filters-open .filters{
+    display:flex; max-height:56vh; overflow-y:auto;
+    margin-top:var(--space-1); padding-top:var(--space-3);
+    border-top:1px solid var(--border-subtle);
+    -webkit-overflow-scrolling:touch;
+  }
 }
