@@ -23,6 +23,33 @@
 .kicker{ display:block; font-size:var(--text-overline); font-weight:var(--weight-black); letter-spacing:var(--tracking-overline); text-transform:uppercase; color:var(--accent); margin-bottom:var(--space-2); }
 .section h2{ font-family:var(--font-display); font-weight:var(--weight-black); font-size:var(--text-h2); color:var(--text-heading); margin:0 0 var(--space-3); line-height:var(--leading-snug); }
 .section .lead{ font-size:var(--text-lead); color:var(--text-body); max-width:74ch; margin:0 0 var(--space-6); }
+
+/* ---- dashboard layout: left highlights rail + right content -------------- */
+.mv-grid{ display:grid; grid-template-columns:300px minmax(0,1fr); gap:var(--space-8); align-items:start; padding-top:var(--space-10); padding-bottom:var(--space-16); }
+.mv-rail{ position:sticky; top:18px; display:flex; flex-direction:column; gap:var(--space-4); }
+.rail-card{ background:var(--surface-card); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); padding:var(--space-5) var(--space-5) var(--space-6); box-shadow:var(--shadow-sm); }
+.rail-card .kicker{ display:block; margin-bottom:var(--space-3); }
+.rail-gauge{ text-align:center; }
+.rail-gauge .gauge{ margin:2px auto 0; }
+.rail-note{ font-size:11.5px; line-height:1.5; color:var(--text-muted); margin:var(--space-3) 0 0; }
+.rail-gauge .rail-note{ text-align:center; }
+.rail-stats{ list-style:none; margin:0; padding:0; }
+.rail-stats li{ display:flex; align-items:baseline; gap:11px; padding:9px 0; border-bottom:1px solid var(--border-subtle); }
+.rail-stats li:first-child{ padding-top:0; }
+.rail-stats b{ font-family:var(--font-display); font-weight:var(--weight-black); font-size:25px; line-height:1; color:var(--text-heading); flex:none; min-width:80px; text-align:right; letter-spacing:var(--tracking-tight); }
+.rail-stats b small{ font-size:13px; font-weight:var(--weight-bold); color:var(--text-muted); }
+.rail-stats span{ font-size:11.5px; line-height:1.3; color:var(--text-body); font-weight:var(--weight-bold); }
+.rail-stats em{ font-style:normal; font-weight:var(--weight-regular); color:var(--text-faint); }
+
+.mv-main{ min-width:0; display:flex; flex-direction:column; gap:var(--space-12); }
+.mv-sec{ min-width:0; }
+.mv-sec h2{ font-family:var(--font-display); font-weight:var(--weight-black); font-size:var(--text-h2); color:var(--text-heading); margin:0 0 var(--space-3); line-height:var(--leading-snug); }
+.mv-sec .lead{ font-size:var(--text-lead); color:var(--text-body); max-width:74ch; margin:0 0 var(--space-6); }
+
+@media (max-width:860px){
+  .mv-grid{ grid-template-columns:1fr; }
+  .mv-rail{ position:static; }
+}
 .section p a, .inl{ color:var(--text-link); font-weight:var(--weight-bold); }
 
 /* ---- MRV + MEL two-up ---------------------------------------------------- */
