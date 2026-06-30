@@ -119,11 +119,26 @@
 .st-pending{ background:var(--status-warning-soft); color:#8a5b00; }
 .st-baseline{ background:var(--color-cloud); color:var(--text-muted); }
 
-/* source tooltips (native title) — hint that the figure is traceable to the CRT */
-.has-tip{ cursor:help; }
+/* source tooltips — hint that the figure is traceable to the CRT.
+   Shown on hover (mouse) AND tap (touch) via a small JS-positioned popover. */
+.has-tip{ cursor:pointer; -webkit-tap-highlight-color:transparent; }
 .ind-right{ display:inline-flex; align-items:center; gap:8px; }
 .srchint{ display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; border-radius:var(--radius-pill); border:1.5px solid var(--border-default); color:var(--text-faint); font-weight:var(--weight-black); font-style:italic; font-size:10px; line-height:1; flex:none; }
 .has-tip:hover .srchint{ color:var(--color-petrol); border-color:var(--color-petrol-blue); }
+
+.tip-pop{
+  position:absolute; z-index:120; max-width:min(300px, calc(100vw - 16px));
+  background:var(--surface-dark-2); color:#fff; pointer-events:none;
+  font-family:var(--font-sans); font-size:12.5px; font-weight:var(--weight-medium); line-height:var(--leading-normal);
+  padding:10px 13px; border-radius:var(--radius-sm); box-shadow:var(--shadow-lg);
+}
+.tip-pop[hidden]{ display:none; }
+.tip-pop::after{
+  content:""; position:absolute; left:var(--ax, 50%); transform:translateX(-50%);
+  border:6px solid transparent; border-top-color:var(--surface-dark-2);
+  top:100%;
+}
+.tip-pop.below::after{ top:auto; bottom:100%; border-top-color:transparent; border-bottom-color:var(--surface-dark-2); }
 
 .pbar{ height:10px; border-radius:var(--radius-pill); background:var(--color-cloud); overflow:hidden; }
 .pfill{ height:100%; border-radius:var(--radius-pill); background:var(--color-forest); }

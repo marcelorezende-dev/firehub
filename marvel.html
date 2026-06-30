@@ -186,7 +186,7 @@
       metaLeft = `<span class="delivered" style="font-size:13px;color:var(--text-muted)">${d.note || '—'}</span>`;
       metaRight = d.target != null ? `<span class="target">Target ≥ ${unitLabel(d.target, d.unit)}</span>` : '';
     }
-    return `<div class="ind has-tip" title="${tip}">
+    return `<div class="ind has-tip" data-tip="${tip}">
       <div class="ind-top"><span class="code">${d.code}</span><span class="ind-right"><span class="badge-st ${bClass}">${bText}</span><span class="srchint" aria-hidden="true">i</span></span></div>
       <div class="title">${d.title}</div>
       <div class="pbar"><div class="pfill ${FILL[d.status]}" style="width:${width}%"></div></div>
@@ -216,7 +216,7 @@
   const R = 78, C = 2 * Math.PI * R;
   const gaugeEl = document.getElementById('gauge');
   gaugeEl.classList.add('has-tip');
-  gaugeEl.title = `Where to find this — ${CRT} → Activities sheet · Progress (%) column · ${totDone} of ${totAll} sub-activities complete`;
+  gaugeEl.dataset.tip = `Where to find this — ${CRT} → Activities sheet · Progress (%) column · ${totDone} of ${totAll} sub-activities complete`;
   gaugeEl.innerHTML =
     `<svg width="172" height="172" viewBox="0 0 172 172">
        <circle class="track" cx="86" cy="86" r="${R}"></circle>
@@ -227,12 +227,63 @@
     const partial = g.done < g.total;
     const w = Math.round((g.done / g.total) * 100);
     const tip = `Where to find this — ${CRT} → Activities sheet · activity ${g.code} · Progress (%) column (${g.done}/${g.total} sub-activities complete)`;
-    return `<div class="act has-tip" title="${tip}">
+    return `<div class="act has-tip" data-tip="${tip}">
       <div class="h"><span class="code">${g.code}</span><span class="frac ${partial ? 'partial' : ''}">${g.done}/${g.total} <span class="srchint" aria-hidden="true">i</span></span></div>
       <div class="name">${g.name}</div>
       <div class="mini"><i class="${partial ? 'partial' : ''}" style="width:${w}%"></i></div>
     </div>`;
   }).join('');
+
+  // ---- traceability tooltips — work on hover (mouse) AND tap (touch) --------
+  const pop = document.createElement('div');
+  pop.className = 'tip-pop';
+  pop.setAttribute('role', 'tooltip');
+  pop.hidden = true;
+  document.body.appendChild(pop);
+  let current = null;
+
+  function showTip(el) {
+    const tip = el.getAttribute('data-tip');
+    if (!tip) return;
+    pop.textContent = tip;
+    pop.hidden = false;
+    current = el;
+    const r = el.getBoundingClientRect();
+    const pr = pop.getBoundingClientRect();
+    let left = r.left + r.width / 2 - pr.width / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - pr.width - 8));
+    let top = r.top - pr.height - 10;
+    pop.classList.remove('below');
+    if (top < 8) { top = r.bottom + 10; pop.classList.add('below'); }
+    const ax = Math.max(14, Math.min(r.left + r.width / 2 - left, pr.width - 14));
+    pop.style.setProperty('--ax', ax + 'px');
+    pop.style.left = (left + window.scrollX) + 'px';
+    pop.style.top = (top + window.scrollY) + 'px';
+  }
+  function hideTip() { pop.hidden = true; current = null; }
+
+  // tap / click — toggle (works everywhere, including touch)
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('.has-tip');
+    if (el) { current === el ? hideTip() : showTip(el); }
+    else { hideTip(); }
+  });
+  // hover — only on devices that actually support it
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('pointerover', (e) => {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      const el = e.target.closest('.has-tip');
+      if (el && el !== current) showTip(el);
+    });
+    document.addEventListener('pointerout', (e) => {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      const el = e.target.closest('.has-tip');
+      if (el && !el.contains(e.relatedTarget)) hideTip();
+    });
+  }
+  window.addEventListener('scroll', hideTip, true);
+  window.addEventListener('resize', hideTip);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideTip(); });
 })();
 </script>
 
