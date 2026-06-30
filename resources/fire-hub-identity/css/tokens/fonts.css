@@ -1,0 +1,5 @@
+/* FAO Fire Hub — Webfonts
+   FAO's institutional typeface is Lato (Łukasz Dziedzic). Loaded from Google Fonts.
+   If you have licensed Lato binaries, self-host them and swap these @import lines for
+   local @font-face rules pointing at the woff2 files. */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap');

@@ -1,0 +1,152 @@
+/* ==========================================================================
+   FAO Fire Hub — Component styles
+   Namespaced .fh-* classes used by the React component primitives.
+   Purely token-driven; safe to ship in the global closure.
+   ========================================================================== */
+
+/* ---- Button ------------------------------------------------------------- */
+.fh-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-sans); font-weight: var(--weight-bold);
+  border: 1px solid transparent; border-radius: var(--radius-md);
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+.fh-btn:active { transform: translateY(1px); }
+.fh-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.fh-btn[disabled], .fh-btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; transform: none; }
+
+/* sizes */
+.fh-btn--sm { font-size: 13px; padding: 6px 14px; height: 32px; }
+.fh-btn--md { font-size: 15px; padding: 9px 18px; height: 42px; }
+.fh-btn--lg { font-size: 16px; padding: 12px 24px; height: 50px; }
+
+/* variants */
+.fh-btn--primary { background: var(--accent); color: #fff; }
+.fh-btn--primary:hover { background: var(--accent-hot); }
+.fh-btn--primary:active { background: var(--accent-press); }
+
+.fh-btn--secondary { background: var(--color-petrol); color: #fff; }
+.fh-btn--secondary:hover { background: #0a3f57; }
+
+.fh-btn--outline { background: transparent; color: var(--color-petrol); border-color: var(--border-default); }
+.fh-btn--outline:hover { background: var(--color-cloud); border-color: var(--color-petrol); }
+
+.fh-btn--ghost { background: transparent; color: var(--color-petrol); }
+.fh-btn--ghost:hover { background: var(--color-cloud); }
+
+.fh-btn--danger { background: var(--status-danger); color: #fff; }
+.fh-btn--danger:hover { background: #d62c16; }
+
+.fh-btn--block { display: flex; width: 100%; }
+
+/* On dark surfaces */
+.fh-on-dark .fh-btn--outline { color: #fff; border-color: var(--border-ondark); }
+.fh-on-dark .fh-btn--outline:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+.fh-on-dark .fh-btn--ghost { color: #fff; }
+.fh-on-dark .fh-btn--ghost:hover { background: rgba(255,255,255,.1); }
+
+/* ---- Icon button -------------------------------------------------------- */
+.fh-iconbtn {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid transparent; border-radius: var(--radius-md);
+  background: transparent; color: var(--color-graphite); cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+.fh-iconbtn:hover { background: var(--color-cloud); color: var(--color-petrol); }
+.fh-iconbtn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.fh-iconbtn--sm { width: 32px; height: 32px; }
+.fh-iconbtn--md { width: 42px; height: 42px; }
+.fh-iconbtn--solid { background: var(--accent); color: #fff; }
+.fh-iconbtn--solid:hover { background: var(--accent-hot); color: #fff; }
+
+/* ---- Input / textarea / select ------------------------------------------ */
+.fh-field { display: flex; flex-direction: column; gap: 6px; }
+.fh-label { font-size: var(--text-sm); font-weight: var(--weight-bold); color: var(--text-strong); }
+.fh-hint { font-size: var(--text-xs); color: var(--text-muted); }
+.fh-hint--error { color: var(--status-danger); }
+.fh-input {
+  font-family: var(--font-sans); font-size: 15px; color: var(--text-strong);
+  background: var(--surface-card); border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm); padding: 10px 12px; width: 100%;
+  transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+}
+.fh-input::placeholder { color: var(--text-faint); }
+.fh-input:hover { border-color: var(--color-mist); }
+.fh-input:focus { outline: none; border-color: var(--color-petrol-blue); box-shadow: var(--focus-ring); }
+.fh-input[aria-invalid="true"] { border-color: var(--status-danger); }
+.fh-input[disabled] { background: var(--color-cloud); color: var(--text-faint); cursor: not-allowed; }
+select.fh-input { appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235a727b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+
+/* ---- Checkbox / radio / switch ------------------------------------------ */
+.fh-check { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-size: 15px; color: var(--text-strong); }
+.fh-check input { position: absolute; opacity: 0; width: 0; height: 0; }
+.fh-check__box {
+  width: 20px; height: 20px; border: 2px solid var(--border-strong); border-radius: var(--radius-sm);
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+  transition: background var(--duration-fast), border-color var(--duration-fast);
+}
+.fh-check__box--radio { border-radius: var(--radius-pill); }
+.fh-check input:checked + .fh-check__box { background: var(--accent); border-color: var(--accent); }
+.fh-check input:checked + .fh-check__box svg { opacity: 1; }
+.fh-check__box svg { opacity: 0; transition: opacity var(--duration-fast); }
+.fh-check input:focus-visible + .fh-check__box { box-shadow: var(--focus-ring); }
+.fh-check input:checked + .fh-check__box--radio { background: #fff; }
+.fh-check input:checked + .fh-check__box--radio::after { content: ""; width: 10px; height: 10px; border-radius: var(--radius-pill); background: var(--accent); }
+
+.fh-switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-size: 15px; color: var(--text-strong); }
+.fh-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.fh-switch__track { width: 42px; height: 24px; border-radius: var(--radius-pill); background: var(--color-mist); position: relative; transition: background var(--duration-base) var(--ease-standard); flex: 0 0 auto; }
+.fh-switch__thumb { position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: var(--radius-pill); background: #fff; box-shadow: var(--shadow-sm); transition: transform var(--duration-base) var(--ease-out); }
+.fh-switch input:checked + .fh-switch__track { background: var(--status-success); }
+.fh-switch input:checked + .fh-switch__track .fh-switch__thumb { transform: translateX(18px); }
+.fh-switch input:focus-visible + .fh-switch__track { box-shadow: var(--focus-ring); }
+
+/* ---- Badge / Tag -------------------------------------------------------- */
+.fh-badge {
+  display: inline-flex; align-items: center; gap: 5px; font-weight: var(--weight-bold);
+  font-size: 12px; line-height: 1; padding: 5px 9px; border-radius: var(--radius-sm);
+}
+.fh-badge--solid { color: #fff; }
+.fh-badge--neutral { background: var(--color-cloud); color: var(--text-body); }
+.fh-tag {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: var(--weight-bold);
+  padding: 5px 12px; border-radius: var(--radius-pill); background: var(--color-cloud); color: var(--text-strong);
+}
+.fh-tag__dot { width: 8px; height: 8px; border-radius: var(--radius-pill); flex: 0 0 auto; }
+.fh-tag__x { display: inline-flex; cursor: pointer; opacity: .6; }
+.fh-tag__x:hover { opacity: 1; }
+
+/* ---- Alert -------------------------------------------------------------- */
+.fh-alert {
+  display: flex; gap: 12px; padding: 14px 16px; border-radius: var(--radius-md);
+  border: 1px solid transparent; border-left-width: var(--border-accent); align-items: flex-start;
+}
+.fh-alert__icon { flex: 0 0 auto; margin-top: 1px; }
+.fh-alert__title { font-weight: var(--weight-bold); color: var(--text-strong); margin: 0 0 2px; font-size: 15px; }
+.fh-alert__body { font-size: 14px; color: var(--text-body); margin: 0; }
+.fh-alert--info { background: var(--status-info-soft); border-color: var(--status-info); }
+.fh-alert--success { background: var(--status-success-soft); border-color: var(--status-success); }
+.fh-alert--warning { background: var(--status-warning-soft); border-color: var(--status-warning); }
+.fh-alert--danger { background: var(--status-danger-soft); border-color: var(--status-danger); }
+
+/* ---- Card --------------------------------------------------------------- */
+.fh-card {
+  background: var(--surface-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden;
+}
+.fh-card--pad { padding: var(--space-6); }
+.fh-card--hover { transition: box-shadow var(--duration-base) var(--ease-standard), transform var(--duration-base) var(--ease-standard); cursor: pointer; }
+.fh-card--hover:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.fh-card__accent { height: var(--border-accent); }
+
+/* ---- Stat --------------------------------------------------------------- */
+.fh-stat { display: flex; flex-direction: column; gap: 4px; }
+.fh-stat__value { font-size: 40px; font-weight: var(--weight-black); color: var(--text-heading); line-height: 1; letter-spacing: var(--tracking-tight); }
+.fh-stat__label { font-size: 13px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-overline); text-transform: uppercase; color: var(--text-muted); }
+.fh-stat__sub { font-size: 14px; color: var(--text-muted); }

@@ -1,0 +1,77 @@
+/* ==========================================================================
+   FAO Fire Hub — Color tokens
+   Sampled from the official Global Fire Management Hub visual identity.
+   The palette is a warm/cool dialogue: fire (red→gold) against
+   water, forest and petrol blues — the elements fire management balances.
+   ========================================================================== */
+:root {
+  /* ---- Brand palette (raw) ------------------------------------------------ */
+  --color-petrol:        #0c4b66; /* deep teal — primary brand surface / deck bg */
+  --color-petrol-blue:   #2f7a9a; /* mid petrol blue — secondary */
+  --color-sky:           #5dacbd; /* sky / water blue */
+  --color-aqua:          #aae2e3; /* pale aqua — hands, water highlights */
+
+  --color-rust:          #a6361e; /* brick red — headlines on light */
+  --color-flame-red:     #ef371f; /* flame red */
+  --color-flame-orange:  #f36617; /* flame orange */
+  --color-orange:        #f67d14; /* signal orange */
+  --color-gold:          #f8af0b; /* amber / gold */
+
+  --color-pine:          #1f6e43; /* deep forest green */
+  --color-forest:        #2a8559; /* forest green */
+  --color-sage:          #69a078; /* muted sage green */
+
+  --color-fao-blue:      #0076b6; /* FAO corporate blue (institutional lockups) */
+  --color-white:         #ffffff;
+
+  /* ---- Neutrals (teal-tinted greys for UI) ------------------------------- */
+  --color-ink:           #11323f; /* near-black, petrol-tinted */
+  --color-graphite:      #34505a;
+  --color-slate:         #5a727b;
+  --color-mist:          #8aa0a6;
+  --color-line:          #d7e0e2;
+  --color-cloud:         #eef3f4;
+  --color-canvas:        #f6f9f9;
+  --color-paper:         #ffffff;
+
+  /* ---- Semantic: text ----------------------------------------------------- */
+  --text-strong:    var(--color-ink);
+  --text-body:      var(--color-graphite);
+  --text-muted:     var(--color-slate);
+  --text-faint:     var(--color-mist);
+  --text-heading:   var(--color-rust);      /* signature brick-red headlines */
+  --text-inverse:   var(--color-white);
+  --text-link:      var(--color-petrol-blue);
+
+  /* ---- Semantic: surfaces ------------------------------------------------- */
+  --surface-page:    var(--color-canvas);
+  --surface-card:    var(--color-paper);
+  --surface-sunken:  var(--color-cloud);
+  --surface-dark:    var(--color-petrol);   /* hero / deck / footer */
+  --surface-dark-2:  #0a3f57;               /* darker petrol step */
+  --surface-brand:   var(--color-petrol-blue);
+
+  /* ---- Semantic: borders -------------------------------------------------- */
+  --border-subtle:  var(--color-line);
+  --border-default: #c4d0d3;
+  --border-strong:  var(--color-graphite);
+  --border-ondark:  rgba(255,255,255,0.22);
+
+  /* ---- Semantic: accents & status ---------------------------------------- */
+  --accent:          var(--color-orange);
+  --accent-hot:      var(--color-flame-orange);
+  --accent-press:    #d95f0a;               /* orange, pressed */
+
+  --status-success:  var(--color-forest);
+  --status-warning:  var(--color-gold);
+  --status-danger:   var(--color-flame-red);
+  --status-info:     var(--color-petrol-blue);
+
+  --status-success-soft: #e3f0e9;
+  --status-warning-soft: #fdf0d2;
+  --status-danger-soft:  #fbe0db;
+  --status-info-soft:    #e0edf2;
+
+  /* ---- Focus -------------------------------------------------------------- */
+  --focus-ring: 0 0 0 3px rgba(47,122,154,0.45);
+}

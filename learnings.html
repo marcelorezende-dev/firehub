@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learnings — FireHub</title>
+<meta name="description" content="Lessons learned, best practices, key findings and technical recommendations from the FAO Global Fire Management Hub IFM work — distilled from the project deliverables and linked to their sources.">
+<link rel="stylesheet" href="resources/fire-hub-identity/css/styles.css">
+<link rel="stylesheet" href="css/firehub.css">
+<link rel="stylesheet" href="css/marvel.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='3' fill='%230c4b66'/%3E%3Cpath fill='%23f67d14' d='M12 4.2c.9 3.5-2.6 4.4-2.6 7.8a2.6 2.6 0 0 0 5.2 0c0-.9-.4-1.7-.9-2.6 1.8.8 3.5 2.6 3.5 5.2a5.2 5.2 0 0 1-10.4 0c0-3.8 4.3-5.4 5.2-10.4Z'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<div class="topnav">
+  <div class="page">
+    <a class="wordmark" href="index.html">Fire<b>Hub</b></a>
+    <nav>
+      <a href="index.html">Catalogue</a>
+      <a href="marvel.html">MARVEL</a>
+      <a class="active" href="learnings.html">Learnings</a>
+      <a href="executive-summary.html">Summary</a>
+    </nav>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="hero">
+    <div class="page">
+      <img class="fao-logo" src="resources/fire-hub-identity/assets/identity/fao-logo-white.png"
+           alt="Food and Agriculture Organization of the United Nations">
+      <p class="eyebrow">Global Fire Management Hub · Learning — the L in MARVEL</p>
+      <h1>Learnings</h1>
+    </div>
+  </div>
+  <div class="kpis">
+    <div class="page">
+      <div class="kpi"><b>33</b><span>Learnings</span></div>
+      <div class="kpi"><b>4</b><span>Types</span></div>
+      <div class="kpi"><b>7</b><span>Themes</span></div>
+      <div class="kpi"><b>14</b><span>Source documents</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="page">
+    <p class="subtitle">Lessons learned, best practices, key findings and technical recommendations from the Integrated Fire Management work — the <strong>Learning</strong> layer of <a class="inl" href="marvel.html">MARVEL</a>.</p>
+    <p class="lede">Each item is distilled from the project's own deliverables — the country diagnostics and roadmaps (Bolivia, Peru, Ecuador), the binational and Pan-Amazon workshop reports, the Integrated Fire Management paper, the LAC early-warning mapping and the IFM assessment tool — clustered by theme and linked to its source document. Every learning carries a project code (<strong>FH-&lt;theme&gt;-&lt;nn&gt;</strong>); select any card to open its printable one-page summary. Filter by type or theme.</p>
+  </div>
+</section>
+
+<main class="section">
+  <div class="page">
+    <div class="learn-summary" id="learnSummary"></div>
+    <div class="filterbar">
+      <div class="filterrow" id="typeFilter"><span class="lbl">Type</span></div>
+      <div class="filterrow" id="themeFilter"><span class="lbl">Theme</span></div>
+      <div class="filterrow"><span class="lcount" id="learnCount"></span><button type="button" class="lreset" id="learnReset" hidden>Clear filters</button></div>
+    </div>
+    <div class="learngrid" id="learngrid"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="page">
+    <img class="fao-logo" src="resources/fire-hub-identity/assets/identity/fao-logo-white.png"
+         alt="Food and Agriculture Organization of the United Nations">
+    <p><strong>Global Fire Management Hub — Learnings.</strong>
+      Lessons, best practices, findings and recommendations distilled from the project deliverables (FAO, GCP/GLO/1351/CAN, Global Affairs Canada).</p>
+    <p class="note">Items are transcribed from the source documents and reflect their reported content. ← <a href="marvel.html" style="color:var(--color-aqua)">Back to MARVEL</a> · <a href="index.html" style="color:var(--color-aqua)">Deliverables catalogue</a></p>
+  </div>
+</footer>
+
+<!-- A4 one-pager overlay (populated by learnings.js) -->
+<div class="sheet-overlay" id="sheetOverlay" hidden>
+  <div class="sheet-tools">
+    <button type="button" class="sheet-tool print" id="sheetPrint">Print one-pager</button>
+    <button type="button" class="sheet-tool close" id="sheetClose">Close ✕</button>
+  </div>
+  <article class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Learning one-pager"></article>
+</div>
+
+<script src="learnings.js"></script>
+</body>
+</html>

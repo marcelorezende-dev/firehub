@@ -1,0 +1,52 @@
+/* ==========================================================================
+   FAO Fire Hub — base element styles
+   Sensible defaults so plain HTML inherits the brand. Tokens come first.
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em;
+  font-family: var(--font-display);
+  color: var(--text-heading);
+  line-height: var(--leading-snug);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-tight);
+}
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); font-weight: var(--weight-bold); }
+h4 { font-size: var(--text-h4); font-weight: var(--weight-bold); }
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+strong, b { font-weight: var(--weight-bold); }
+
+small { font-size: var(--text-sm); }
+
+code, pre, kbd { font-family: var(--font-mono); }
+
+::selection { background: rgba(248,175,11,0.35); }
+
+/* Overline / eyebrow label */
+.fh-overline {
+  font-size: var(--text-overline);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--accent);
+}

@@ -1,0 +1,18 @@
+# ---------------------------------------------------------------------------
+# FireHub — public deployment ignore list
+# ---------------------------------------------------------------------------
+# The source deliverables are INTERNAL / DRAFT FAO documents (incl. draft
+# terminal report, a Word doc with internal reviewer comments, and attendance
+# lists with personal data). They are NOT published publicly. The platform
+# pages (catalogue, MARVEL, learnings, executive summary) are deployed; the
+# document download links resolve only in the internal/local copy that has
+# this folder present.
+GAC deliverables/
+
+# working artifacts
+rename-log.csv
+
+# os / editor
+Thumbs.db
+.DS_Store
+*.tmp

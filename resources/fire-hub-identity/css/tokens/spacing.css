@@ -1,0 +1,32 @@
+/* ==========================================================================
+   FAO Fire Hub — Spacing & layout tokens
+   4px base grid. The identity is built on a square mosaic, so spacing
+   stays on an even, geometric rhythm.
+   ========================================================================== */
+:root {
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* ---- Container widths --------------------------------------------------- */
+  --container-sm:   640px;
+  --container-md:   880px;
+  --container-lg:   1120px;
+  --container-xl:   1320px;
+
+  /* ---- Gutters ------------------------------------------------------------ */
+  --gutter:        24px;
+  --gutter-lg:     40px;
+  --section-y:     80px;
+}
